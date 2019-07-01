@@ -20,9 +20,7 @@ module.exports = {
             { text: 'stylus-converter', link: 'https://github.com/txs1992/stylus-converter' }
           ]
         }
-      ],
-      // 为以下路由添加侧边栏
-      sidebar: ['/', '/git', '/vue']
+      ]
     },
     
 }
