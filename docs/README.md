@@ -2,7 +2,7 @@
 home: true
 heroImage: /logo.jpg
 actionText: 开始阅读 →
-actionLink: /accumulate/
+actionLink: /iOS/
 features:
 - title: 记录
   details: 好记性不如烂笔头。学习的过程并不仅仅是简单的一阅而过。对于学到过的知识点，应该系统性的进行归纳与记录，用自己的语言再组织一遍，并在内心问自己，自己的这篇记录，别人能够看得懂吗？

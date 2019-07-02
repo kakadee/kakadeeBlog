@@ -9,5 +9,8 @@
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
     "d": "bash deploy.sh"
+  },
+  "dependencies": {
+    "vuepress-theme-reco": "0.3.11"
   }
 }
