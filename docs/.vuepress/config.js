@@ -17,21 +17,24 @@ module.exports = {
         { text: 'Resume', link: '/Resume/' },
         { text: 'Essay', link: '/Essay/' }
       ],
-      // sidebar: {
-      //   '/iOS/': iOSSideBarConfig('iOS'),
-      // }
+      sidebar: {
+        '/iOS/': [
+          '/iOS/',
+          {
+            title: 'iOS基础',
+            children: [
+              '/iOS/iOSBasic/Block详解',
+              '/iOS/iOSBasic/KVCKVO详解',
+              '/iOS/iOSBasic/DesignatedInitializer',
+            ]
+          },
+          {
+            title: 'Core Animation',
+            children: [
+              '/iOS/CoreAnimation/CoreAnimation'
+            ]
+          }
+        ]
+      }
     }
-}
-
-function iOSSideBarConfig(title) {
-  return [
-    {
-      title,
-      collapsable: false,
-      children: [
-        '',
-        'CoreAnimation'
-      ]
-    }
-  ]
 }
