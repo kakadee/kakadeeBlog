@@ -12,7 +12,7 @@ KVC 是通过字符串的 key 来访问和设置类属性的。
 
 * 设置值
 
-```objective-c
+```objectivec
 // value的值为OC对象，如果是基本数据类型要包装成NSNumber
 - (void)setValue:(id)value forKey:(NSString *)key;
 
@@ -25,7 +25,7 @@ KVC 是通过字符串的 key 来访问和设置类属性的。
 
 * 获取值
 
-```
+```objectivec
 - (id)valueForKey:(NSString *)key;
 
 - (id)valueForKeyPath:(NSString *)keyPath;
@@ -35,7 +35,8 @@ KVC 是通过字符串的 key 来访问和设置类属性的。
 ```
 
 NSKeyValueCoding 类别中还有其他的一些方法:
-```
+
+```objectivec
 // 允许直接访问实例变量，默认返回YES。如果某个类重写了这个方法，且返回NO，则KVC不可以访问该类。
 + (BOOL)accessInstanceVariablesDirectly;
 
@@ -55,7 +56,8 @@ NSKeyValueCoding 类别中还有其他的一些方法:
 ## 如何使用KVC
 
 定义一个Person类。
-```
+
+```objectivec
 //  Person.h
 @interface Person : NSObject
 
@@ -77,7 +79,7 @@ NSKeyValueCoding 类别中还有其他的一些方法:
 
 设置私有变量 age 和 内部变量 name, 如果用一般的 setter 和 getter，在类外部是不能访问到私有变量的，不能设值给只读变量，那是不是就拿它没办法了呢? 然而 KVC 可以做到，就是这么神奇。
 
-```
+```objectivec
 [p setValue:@"Jack" forKey:@"name"];
 [p setValue:[NSNumber numberWithInteger:14] forKey:@"age"];
 NSLog(@"test---p.name:%@,age:%@",[p valueForKey:@"name"],[p valueForKey:@"isAge"]);
@@ -85,24 +87,24 @@ NSLog(@"test---p.name:%@,age:%@",[p valueForKey:@"name"],[p valueForKey:@"isAge"
 
 ## KVC实现的细节
 
-```
+```objectivec
 - (void)setValue:(id)value forKey:(NSString *)key;
 ```
 
 1. 首先搜索 setter 方法，有就直接赋值。
 2. 如果上面的 setter 方法没有找到，再检查类方法+ (BOOL)accessInstanceVariablesDirectly
     1. 返回 NO，则执行setValue：forUNdefinedKey：
-    2. 返回 YES，则按_<key>，_<isKey>，<key>，<isKey>的顺序搜索成员名。
+    2. 返回 YES，则按_\<key>，_\<isKey>，\<key>，\<isKey>的顺序搜索成员名。
 3. 还没有找到的话，就调用setValue:forUndefinedKey:
 
-```
+```objectivec
 - (id)valueForKey:(NSString *)key;
 ```
 
 1. 首先查找 getter 方法，找到直接调用。如果是 bool、int、float 等基本数据类型，会做 NSNumber 的转换。
 2. 如果没查到，再检查类方法+ (BOOL)accessInstanceVariablesDirectly
     1. 返回 NO，则执行valueForUNdefinedKey:
-    2. 返回 YES，则按_<key>,_is<Key>,<key>,is<Key>的顺序搜索成员名。
+    2. 返回 YES，则按_\<key>,_is\<Key>,\<key>,is\<Key>的顺序搜索成员名。
 3. 还没有找到的话，调用valueForUndefinedKey;
 
 ## KVC 总结
@@ -117,7 +119,6 @@ NSLog(@"test---p.name:%@,age:%@",[p valueForKey:@"name"],[p valueForKey:@"isAge"
 **优点：**
 
 1. 不需要通过 setter、getter 方法去访问对象的属性，可以访问对象的私有属性
-
 2. 可以轻松处理集合类。
 
 **缺点：**
