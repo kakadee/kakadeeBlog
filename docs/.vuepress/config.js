@@ -31,7 +31,8 @@ module.exports = {
           {
             title: 'Core Animation',
             children: [
-              '/iOS/CoreAnimation/CoreAnimation'
+              '/iOS/CoreAnimation/CoreAnimation路径规划',
+              '/iOS/CoreAnimation/转场动画',
             ]
           }
         ]
