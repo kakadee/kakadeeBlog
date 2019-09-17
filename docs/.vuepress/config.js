@@ -17,6 +17,7 @@ module.exports = {
         { text: 'Resume', link: '/Resume/' },
         { text: 'Essay', link: '/Essay/' }
       ],
+      sidebarDepth : 3,
       sidebar: {
         '/iOS/': [
           '/iOS/',
@@ -32,7 +33,8 @@ module.exports = {
             title: 'Core Animation',
             children: [
               '/iOS/CoreAnimation/CoreAnimation路径规划',
-              '/iOS/CoreAnimation/转场动画',
+              '/iOS/CoreAnimation/0-视图转场动画',
+              '/iOS/CoreAnimation/1-控制器转场动画',
             ]
           }
         ]
