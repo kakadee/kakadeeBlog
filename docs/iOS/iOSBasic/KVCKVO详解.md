@@ -1,12 +1,12 @@
-# KVC,KVO 详解
+# KVC & KVO
 
-## 什么是KVC
+## KVC
 
 1. KVC 中文名叫 键值编码，是 Key-Value-Coding 的简称。
 2. KVC 是一种可以直接通过字符串的名字 key 来访问类属性的机制，而不是通过调用 setter、getter 方法去访问。
 3. 我们可以通过在运行时动态的访问和修改对象的属性。而不是在编译时确定，KVC 是 iOS 开发中的黑魔法之一。
 
-## KVC有哪些属性
+### KVC属性
 
 KVC 是通过字符串的 key 来访问和设置类属性的。
 
@@ -53,7 +53,7 @@ NSKeyValueCoding 类别中还有其他的一些方法:
 - (BOOL)validateValue:(id)ioValue forKey:(NSString *)inKey error:(NSError)outError;
 ```
 
-## 如何使用KVC
+### 如何使用KVC
 
 定义一个Person类。
 
@@ -79,7 +79,7 @@ NSKeyValueCoding 类别中还有其他的一些方法:
 NSLog(@"test---p.name:%@,age:%@",[p valueForKey:@"name"],[p valueForKey:@"isAge"]);
 ```
 
-## KVC实现的细节
+### 实现的细节
 
 ```objectivec
 - (void)setValue:(id)value forKey:(NSString *)key;
@@ -105,7 +105,7 @@ NSLog(@"test---p.name:%@,age:%@",[p valueForKey:@"name"],[p valueForKey:@"isAge"
 3. 还没有找到的话，调用valueForUndefinedKey;
 4. 如果没有重写 valueForUndefinedKey，也会造成崩溃(抛出NSUndefinedKeyException)。
 
-## KVC 总结
+### 总结
 
 **KVC 与点语法比较**
 用 KVC 访问属性和用点语法访问属性的区别：
@@ -125,13 +125,13 @@ NSLog(@"test---p.name:%@,age:%@",[p valueForKey:@"name"],[p valueForKey:@"isAge"
 2. 执行效率要低于 setter 和 getter 方法。因为使用 KVC 键值编码，它必须先解析字符串，然后在设置或者访问对象的实例变量。
 3. 使用 KVC 会破坏类的封装性。
 
-## 什么是KVO
+## KVO
 
 1. KVO 是 Key-Value-Observing 的简称。
 2. KVO 是一个观察者模式。观察一个对象的属性，注册一个指定的路径，若这个对象的的属性被修改，则 KVO 会自动通知观察者。
 3. 更通俗的话来说就是任何对象都允许观察其他对象的属性，并且可以接收其他对象状态变化的通知。
 
-## 如何使用KVO
+### 如何使用KVO
 
 ```objectivec
 1.// 注册观察者，实施监听；
@@ -149,7 +149,7 @@ NSLog(@"test---p.name:%@,age:%@",[p valueForKey:@"name"],[p valueForKey:@"isAge"
 [self removeObserver:self forKeyPath:@“age"];
 ```
 
-## KVO的实现原理
+### KVO实现原理
 
 当某个类的对象第一次被观察时，系统就会在运行期动态地创建该类的一个派生类，在这个派生类中重写基类中任何被观察属性的 setter 方法。 派生类在被重写的 setter 方法实现真正的通知机制，就如前面手动实现键值观察那样。这么做是基于设置属性会调用 setter 方法，而通过重写就获得了 KVO 需要的通知机制。
 
@@ -179,7 +179,7 @@ KVO 在调用存取方法之前总是调用 willChangeValueForKey:，通知系�
 
 ```
 
-## 问题
+## 面试题
 
 ### 1. iOS用什么方式实现对一个对象的KVO？（KVO的本质是什么？）
 

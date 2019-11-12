@@ -27,6 +27,7 @@ module.exports = {
               '/iOS/iOSBasic/Block详解',
               '/iOS/iOSBasic/KVCKVO详解',
               '/iOS/iOSBasic/DesignatedInitializer',
+              '/iOS/iOSBasic/Category本质',
             ]
           },
           {
@@ -35,6 +36,7 @@ module.exports = {
               '/iOS/CoreAnimation/CoreAnimation路径规划',
               '/iOS/CoreAnimation/0-视图转场动画',
               '/iOS/CoreAnimation/1-控制器转场动画',
+              '/iOS/CoreAnimation/CATransaction',
             ]
           }
         ]

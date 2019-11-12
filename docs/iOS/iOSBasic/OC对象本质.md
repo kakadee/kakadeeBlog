@@ -98,7 +98,6 @@ struct objc_class : objc_object {
 
 ## OC对象主要可以分哪几种
 
-
 ## 对象的结构
 ## 一个对象在内存中是如何分配的
 ## 一个NSObject对象占用多少内存？
